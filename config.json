@@ -64,8 +64,8 @@
         },
         {
           "title": "Antena 3",
-          "imageUrl": "https://i.postimg.cc/YqdrZRgd/antena3.png",
-          "type": "web",
+          "imageUrl": "https://imagenes.atresplayer.com/atp/clipping/cmsimages01/2025/11/04/75602CF8-7668-4223-B121-3FFFA4177E2E//720x540.jpg",
+          "type": "stream",
           "value": "https://www.tvporinternet2.com/antena-3-en-vivo-por-internet.html",
           "requiresVpn": true
         },
