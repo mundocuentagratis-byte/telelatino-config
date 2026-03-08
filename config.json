@@ -26,11 +26,146 @@
   "sections": [
     {
       "title": "TDT",
-      "items": []
+      "items": [
+        {
+          "title": "La 1",
+          "imageUrl": "https://pbs.twimg.com/profile_images/2008842210414915584/zIp_go25_200x200.jpg",
+          "type": "stream",
+          "value": "https://ztnr.rtve.es/ztnr/1688877.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "La 2",
+          "imageUrl": "https://yt3.googleusercontent.com/ytc/AIdro_kqgHWySi5xprs1VFCNCX0IKNT8yXBLZC43JMoB8j0JUto=s200",
+          "type": "stream",
+          "value": "https://ztnr.rtve.es/ztnr/1688885.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "24h",
+          "imageUrl": "https://pbs.twimg.com/profile_images/1634293543987453954/mb1Rzmso_200x200.jpg",
+          "type": "stream",
+          "value": "https://ztnr.rtve.es/ztnr/1694255.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "Teledeporte",
+          "imageUrl": "https://graph.facebook.com/teledeporteRTVE/picture?width=200&height=200",
+          "type": "stream",
+          "value": "https://d1cctoeg0n48w5.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-mnixw9wn5ugmv/TeledeporteES.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "Clan",
+          "imageUrl": "https://graph.facebook.com/clantve/picture?width=200&height=200",
+          "type": "stream",
+          "value": "https://dum8zv1rbdjj2.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-x6uutpgph4tpt/ClanES.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "Antena 3",
+          "imageUrl": "https://i.postimg.cc/YqdrZRgd/antena3.png",
+          "type": "web",
+          "value": "https://www.tvporinternet2.com/antena-3-en-vivo-por-internet.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "Caracol",
+          "imageUrl": "https://i.postimg.cc/xT6fh5H5/caracol.png",
+          "type": "web",
+          "value": "https://www.tvporinternet2.com/caracol-en-vivo-por-internet.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "RCN",
+          "imageUrl": "https://i.postimg.cc/9FLmKbTY/rcn.png",
+          "type": "web",
+          "value": "https://www.tvporinternet2.com/rcn-en-vivo-por-internet.html",
+          "requiresVpn": true
+        }
+      ]
     },
     {
       "title": "DEPORTES",
-      "items": []
+      "items": [
+        {
+          "title": "Movistar Liga de Campeones",
+          "imageUrl": "https://i.postimg.cc/rwzVk4N5/movistarligadecampeones.png",
+          "type": "web",
+          "value": "https://www.tvporinternet2.com/movistar-liga-de-campeones-en-vivo-por-internet.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "DAZN F1",
+          "imageUrl": "https://i.postimg.cc/YCjrHFzg/daznf1.jpg",
+          "type": "web",
+          "value": "https://www.tvporinternet2.com/dazn-f1-en-vivo-por-internet.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "ESPN 7 Lat",
+          "imageUrl": "https://i.postimg.cc/xTYp20B9/In-Shot-20251010-211018612.jpg",
+          "type": "stream",
+          "value": "http://170.246.176.223:12300/Live/ce4f9057196d9a934a172c8a206a893a/local-espn7lt.playlist.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "ESPN 7 Lat VPN",
+          "imageUrl": "https://i.postimg.cc/xTYp20B9/In-Shot-20251010-211018612.jpg",
+          "type": "stream",
+          "value": "http://170.246.176.223:12300/Live/ce4f9057196d9a934a172c8a206a893a/local-espn7lt.playlist.m3u8",
+          "requiresVpn": true
+        },
+        {
+          "title": "ESPN Premium Lat",
+          "imageUrl": "https://i.postimg.cc/SRDnjRp0/In-Shot-20251018-095209924.jpg",
+          "type": "stream",
+          "value": "http://170.246.176.223:12300/Live/ce4f9057196d9a934a172c8a206a893a/local-espnpremlat.playlist.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "ESPN",
+          "imageUrl": "https://i.postimg.cc/6pTWXZf3/espn.png",
+          "type": "web",
+          "value": "https://www.tvporinternet2.com/espn-en-vivo-por-internet.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "ESPN 2",
+          "imageUrl": "https://i.postimg.cc/sg1jrW42/espn2.png",
+          "type": "web",
+          "value": "https://www.tvporinternet2.com/espn-2-en-vivo-por-internet.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "ESPN 3",
+          "imageUrl": "https://i.postimg.cc/3xW8TGFx/espn3.png",
+          "type": "web",
+          "value": "https://www.tvporinternet2.com/espn-3-en-vivo-por-internet.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "ESPN 4",
+          "imageUrl": "https://i.postimg.cc/kgDJmSvX/espn4.png",
+          "type": "web",
+          "value": "https://www.tvporinternet2.com/espn-4-en-vivo-por-internet.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "ESPN 5",
+          "imageUrl": "https://i.postimg.cc/134mQFrm/espn5.png",
+          "type": "web",
+          "value": "https://www.tvporinternet2.com/espn-5-en-vivo-por-internet.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "ESPN 6",
+          "imageUrl": "https://i.postimg.cc/wj3qpNQx/espn6.png",
+          "type": "web",
+          "value": "https://www.tvporinternet2.com/espn-6-en-vivo-por-internet.html",
+          "requiresVpn": true
+        }
+      ]
     },
     {
       "title": "INFANTIL",
@@ -42,56 +177,6 @@
     },
     {
       "title": "RECOMENDADAS",
-      "items": []
-    }
-  ]
-}{
-  "appName": "Telelatino",
-  "shareText": "Descarga mi app desde aquí: https://www.example.com",
-  "menu": [
-    {
-      "title": "Política de Privacidad",
-      "type": "web",
-      "value": "https://www.example.com/privacy"
-    },
-    {
-      "title": "Compartir App",
-      "type": "share",
-      "value": "Descarga mi app desde aquí: https://www.example.com"
-    },
-    {
-      "title": "Descargar VPN",
-      "type": "external",
-      "value": "https://one.one.one.one/es-ES/"
-    },
-    {
-      "title": "Contacto",
-      "type": "external",
-      "value": "https://wa.me/34123456789"
-    }
-  ],
-  "sections": [
-    {
-      "title": "SERVIDORES",
-      "items": [
-        {
-          "title": "RTV España",
-          "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.tXbuc25fTr9hMwQWg8G33wHaEk?rs=1&pid=ImgDetMain&o=7&rm=3",
-          "type": "stream",
-          "value": "https://ztnr.rtve.es/ztnr/1694255.m3u8",
-          "requiresVpn": false
-        },
-        {
-          "title": "ESPN Premium Lat",
-          "imageUrl": "https://i.postimg.cc/SRDnjRp0/In-Shot-20251018-095209924.jpg",
-          "type": "stream",
-          "value": "http://170.246.176.223:12300/Live/ce4f9057196d9a934a172c8a206a893a/local-espnpremlat.playlist.m3u8",
-          "requiresVpn": false
-        }
-      ]
-    },
-    {
-      "title": "RECOMENDACIONES",
       "items": []
     }
   ]
