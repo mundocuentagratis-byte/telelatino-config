@@ -25,6 +25,53 @@
   ],
   "sections": [
     {
+      "title": "TDT",
+      "items": []
+    },
+    {
+      "title": "DEPORTES",
+      "items": []
+    },
+    {
+      "title": "INFANTIL",
+      "items": []
+    },
+    {
+      "title": "PREMIUM",
+      "items": []
+    },
+    {
+      "title": "RECOMENDADAS",
+      "items": []
+    }
+  ]
+}{
+  "appName": "Telelatino",
+  "shareText": "Descarga mi app desde aquí: https://www.example.com",
+  "menu": [
+    {
+      "title": "Política de Privacidad",
+      "type": "web",
+      "value": "https://www.example.com/privacy"
+    },
+    {
+      "title": "Compartir App",
+      "type": "share",
+      "value": "Descarga mi app desde aquí: https://www.example.com"
+    },
+    {
+      "title": "Descargar VPN",
+      "type": "external",
+      "value": "https://one.one.one.one/es-ES/"
+    },
+    {
+      "title": "Contacto",
+      "type": "external",
+      "value": "https://wa.me/34123456789"
+    }
+  ],
+  "sections": [
+    {
       "title": "SERVIDORES",
       "items": [
         {
