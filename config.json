@@ -1,0 +1,62 @@
+{
+  "appName": "Telelatino",
+  "shareText": "Descarga mi app desde aquí: https://www.example.com",
+  "menu": [
+    {
+      "title": "Política de Privacidad",
+      "type": "web",
+      "value": "https://www.example.com/privacy"
+    },
+    {
+      "title": "Compartir App",
+      "type": "share",
+      "value": "Descarga mi app desde aquí: https://www.example.com"
+    },
+    {
+      "title": "Contacto",
+      "type": "external",
+      "value": "https://wa.me/34123456789"
+    },
+    {
+      "title": "Actualizar App",
+      "type": "external",
+      "value": "https://www.example.com/app-release.apk"
+    }
+  ],
+  "sections": [
+    {
+      "title": "SERVIDORES",
+      "items": [
+        {
+          "title": "TDT España",
+          "imageUrl": "https://via.placeholder.com/300x200.png?text=TDT+Espana",
+          "type": "web",
+          "value": "https://www.wikipedia.org"
+        },
+        {
+          "title": "TDT Noticias",
+          "imageUrl": "https://via.placeholder.com/300x200.png?text=Noticias",
+          "type": "web",
+          "value": "https://www.wikipedia.org"
+        }
+      ]
+    },
+    {
+      "title": "RECOMENDACIONES",
+      "items": [
+        {
+          "title": "Canal 1",
+          "imageUrl": "https://via.placeholder.com/300x200.png?text=Canal+1",
+          "type": "web",
+          "value": "https://www.wikipedia.org"
+        },
+        {
+          "title": "Canal 2",
+          "imageUrl": "https://via.placeholder.com/300x200.png?text=Canal+2",
+          "type": "web",
+          "value": "https://www.wikipedia.org"
+        }
+      ]
+    }
+  ]
+}
