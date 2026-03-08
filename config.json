@@ -75,7 +75,22 @@
           "type": "sniff",
           "value": "https://www.tvporinternet2.com/rcn-en-vivo-por-internet.html",
           "requiresVpn": true
+        },
+         {
+          "title": "telecinco",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0VMGi4VFB3TsBNlzWkwAd_15nbmB2t9P7lg&s",
+          "type": "sniff",
+          "value": "https://www.mediasetinfinity.es/directo/telecinco/",
+          "requiresVpn": true
+        },
+         {
+          "title": "RCN",
+          "imageUrl": "https://colombia.mom-gmr.org/uploads/tx_lfrogmom/media/511-941_import.png",
+          "type": "sniff",
+          "value": "https://www.tvporinternet2.com/rcn-en-vivo-por-internet.html",
+          "requiresVpn": true
         }
+    
       ]
     },
     {
