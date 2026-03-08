@@ -34,10 +34,10 @@
           "value": "https://ztnr.rtve.es/ztnr/1694255.m3u8"
         },
         {
-          "title": "Canal Stream Demo",
-          "imageUrl": "https://via.placeholder.com/300x200.png?text=Stream+Demo",
+          "title": "Canal Stream RTV",
+          "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.tXbuc25fTr9hMwQWg8G33wHaEk?rs=1&pid=ImgDetMain&o=7&rm=3",
           "type": "stream",
-          "value": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+          "value": "https://ztnr.rtve.es/ztnr/1694255.m3u8"
         }
       ]
     },
