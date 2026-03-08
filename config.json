@@ -39,7 +39,7 @@
           "imageUrl": "https://i.postimg.cc/SRDnjRp0/In-Shot-20251018-095209924.jpg",
           "type": "stream",
           "value": "http://170.246.176.223:12300/Live/ce4f9057196d9a934a172c8a206a893a/local-espnpremlat.playlist.m3u8",
-          "requiresVpn": true
+          "requiresVpn": false
         }
       ]
     },
