@@ -45,13 +45,13 @@
       "title": "RECOMENDACIONES",
       "items": [
         {
-          "title": "Canal 1",
+          "title": "DAZN",
           "imageUrl": "https://via.placeholder.com/300x200.png?text=Canal+1",
           "type": "web",
           "value": "https://www.wikipedia.org"
         },
         {
-          "title": "Canal 2",
+          "title": "CHAMPIOS",
           "imageUrl": "https://via.placeholder.com/300x200.png?text=Canal+2",
           "type": "web",
           "value": "https://www.wikipedia.org"
