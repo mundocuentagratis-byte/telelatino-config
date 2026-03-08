@@ -211,7 +211,29 @@
     },
     {
       "title": "PREMIUM",
-      "items": []
+      "items": [
+           {
+          "title": "StarChannel",
+          "imageUrl": "https://i.postimg.cc/2jV0S4f8/Star-Channel-285.png",
+          "type": "stream",
+          "value": "http://179.43.101.99/Live/4ebed19e324f278338425a6190627141/local-68.playlist.m3u8",
+          "requiresVpn": false
+        },
+         {
+          "title": "HBO",
+          "imageUrl": "https://loghi-famosi.com/wp-content/uploads/2020/09/HBO-Simbolo-650x366.jpg",
+          "type": "stream",
+          "value": "http://179.43.101.99/Live/4ebed19e324f278338425a6190627141/local-102.playlist.m3u8",
+          "requiresVpn": false
+        },
+         {
+          "title": "Space",
+          "imageUrl": "https://i.postimg.cc/zXhpn8Bs/Space-285.png",
+          "type": "stream",
+          "value": "http://179.43.101.99/Live/4ebed19e324f278338425a6190627141/local-69.playlist.m3u8",
+          "requiresVpn": false
+        }
+      ]
     },
     {
       "title": "RECOMENDADAS",
