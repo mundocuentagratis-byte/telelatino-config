@@ -71,7 +71,7 @@
         },
         {
           "title": "RCN",
-          "imageUrl": "https://i.postimg.cc/9FLmKbTY/rcn.png",
+          "imageUrl": "https://colombia.mom-gmr.org/uploads/tx_lfrogmom/media/511-941_import.png",
           "type": "sniff",
           "value": "https://www.tvporinternet2.com/rcn-en-vivo-por-internet.html",
           "requiresVpn": true
@@ -83,7 +83,7 @@
       "items": [
         {
           "title": "Movistar Liga de Campeones",
-          "imageUrl": "https://i.postimg.cc/rwzVk4N5/movistarligadecampeones.png",
+          "imageUrl": "https://wiki2023.mundoplus.tv/_media/logos/mlc.png",
           "type": "sniff",
           "value": "https://www.tvporinternet2.com/movistar-liga-de-campeones-en-vivo-por-internet.html",
           "requiresVpn": true
@@ -102,13 +102,7 @@
           "value": "http://170.246.176.223:12300/Live/ce4f9057196d9a934a172c8a206a893a/local-espn7lt.playlist.m3u8",
           "requiresVpn": false
         },
-        {
-          "title": "ESPN 7 Lat VPN",
-          "imageUrl": "https://i.postimg.cc/xTYp20B9/In-Shot-20251010-211018612.jpg",
-          "type": "stream",
-          "value": "http://170.246.176.223:12300/Live/ce4f9057196d9a934a172c8a206a893a/local-espn7lt.playlist.m3u8",
-          "requiresVpn": true
-        },
+      
         {
           "title": "ESPN Premium Lat",
           "imageUrl": "https://i.postimg.cc/SRDnjRp0/In-Shot-20251018-095209924.jpg",
@@ -118,42 +112,42 @@
         },
         {
           "title": "ESPN",
-          "imageUrl": "https://i.postimg.cc/6pTWXZf3/espn.png",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb8gVB_VOZSrxym1jnKzlX2wKwTbTBJDjtYw&s",
           "type": "sniff",
           "value": "https://www.tvporinternet2.com/espn-en-vivo-por-internet.html",
           "requiresVpn": true
         },
         {
           "title": "ESPN 2",
-          "imageUrl": "https://i.postimg.cc/sg1jrW42/espn2.png",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxRMV2G1q3dXWyhbC_BpMpCWMkfQAigmoiuQ&s",
           "type": "sniff",
           "value": "https://www.tvporinternet2.com/espn-2-en-vivo-por-internet.html",
           "requiresVpn": true
         },
         {
           "title": "ESPN 3",
-          "imageUrl": "https://i.postimg.cc/3xW8TGFx/espn3.png",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCmUeuQEC16S_wMye50_L7ljaGN17FeT02kA&s",
           "type": "sniff",
           "value": "https://www.tvporinternet2.com/espn-3-en-vivo-por-internet.html",
           "requiresVpn": true
         },
         {
           "title": "ESPN 4",
-          "imageUrl": "https://i.postimg.cc/kgDJmSvX/espn4.png",
+          "imageUrl": "https://foros.forounivers.com/uploads/monthly_2024_02/large.ESPN4.png.eb49e6eecab0c1a9e2c758279e2a6784.png",
           "type": "sniff",
           "value": "https://www.tvporinternet2.com/espn-4-en-vivo-por-internet.html",
           "requiresVpn": true
         },
         {
           "title": "ESPN 5",
-          "imageUrl": "https://i.postimg.cc/134mQFrm/espn5.png",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy2SfWvS72hAWhFGWsfZ7CslVNhrOj9MIppw&s",
           "type": "sniff",
           "value": "https://www.tvporinternet2.com/espn-5-en-vivo-por-internet.html",
           "requiresVpn": true
         },
         {
           "title": "ESPN 6",
-          "imageUrl": "https://i.postimg.cc/wj3qpNQx/espn6.png",
+          "imageUrl": "https://foros.forounivers.com/uploads/monthly_2024_02/large.ESPN6.png.5952c88e89550d75dce469022802382d.png",
           "type": "sniff",
           "value": "https://www.tvporinternet2.com/espn-6-en-vivo-por-internet.html",
           "requiresVpn": true
