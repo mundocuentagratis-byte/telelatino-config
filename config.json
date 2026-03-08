@@ -166,6 +166,20 @@
           "type": "sniff",
           "value": "https://www.tvporinternet2.com/espn-6-en-vivo-por-internet.html",
           "requiresVpn": true
+        },
+        {
+          "title": "DAZN LA LIGA",
+          "imageUrl": "https://yt3.googleusercontent.com/Tpd5oPJlZrPG2sveqaegjfCSaEtqfPRppdhv3v2eMDUT94F3AbicfHmSVqWvslLVX5OlUrDq2Q=s900-c-k-c0x00ffffff-no-rj",
+          "type": "sniff",
+          "value": "https://www.tvporinternet2.com/dazn-la-liga-en-vivo-por-internet.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "TUDN",
+          "imageUrl": "https://static.wikia.nocookie.net/youtubepedia/images/3/32/TUDN_M%C3%A9xico.jpg/revision/latest/thumbnail/width/360/height/360?cb=20211120191946&path-prefix=es",
+          "type": "sniff",
+          "value": "https://www.tvporinternet2.com/tudn-en-vivo-por-internet.html",
+          "requiresVpn": true
         }
       ]
     },
