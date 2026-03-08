@@ -5,7 +5,7 @@
     {
       "title": "Política de Privacidad",
       "type": "web",
-      "value": "https://www.telelatino.com.es/p/aviso-legal.html"
+      "value": "https://www.example.com/privacy"
     },
     {
       "title": "Compartir App",
@@ -28,16 +28,16 @@
       "title": "SERVIDORES",
       "items": [
         {
-          "title": "ESPN",
-          "imageUrl": "https://via.placeholder.com/300x200.png?text=TDT+Espana",
+          "title": "TDT España Web",
+          "imageUrl": "https://via.placeholder.com/300x200.png?text=TDT+Espana+Web",
           "type": "web",
           "value": "https://www.wikipedia.org"
         },
         {
-          "title": "LA LIGA",
-          "imageUrl": "https://via.placeholder.com/300x200.png?text=Noticias",
-          "type": "web",
-          "value": "https://www.wikipedia.org"
+          "title": "Canal Stream Demo",
+          "imageUrl": "https://via.placeholder.com/300x200.png?text=Stream+Demo",
+          "type": "stream",
+          "value": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
         }
       ]
     },
@@ -45,16 +45,16 @@
       "title": "RECOMENDACIONES",
       "items": [
         {
-          "title": "DAZN",
-          "imageUrl": "https://via.placeholder.com/300x200.png?text=Canal+1",
+          "title": "Canal 1 Web",
+          "imageUrl": "https://via.placeholder.com/300x200.png?text=Canal+1+Web",
           "type": "web",
           "value": "https://www.wikipedia.org"
         },
         {
-          "title": "CHAMPIOS2",
-          "imageUrl": "https://via.placeholder.com/300x200.png?text=Canal+2",
-          "type": "web",
-          "value": "https://www.wikipedia.org"
+          "title": "Canal Externo",
+          "imageUrl": "https://via.placeholder.com/300x200.png?text=Canal+Externo",
+          "type": "external",
+          "value": "https://www.google.com"
         }
       ]
     }
