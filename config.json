@@ -77,18 +77,18 @@
           "requiresVpn": true
         },
          {
-          "title": "telecinco",
-          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0VMGi4VFB3TsBNlzWkwAd_15nbmB2t9P7lg&s",
-          "type": "stream",
-          "value": "https://directos.mediasetinfinity.es/orilinear01/live/linear01/main/main.isml/dai.m3u8?hdnea=st=1773004247~exp=1773004547~acl=*~id=a365a844-74e8-4c25-a3e3-db8b4b985bdb~hmac=74bae3a67f40ed126ada6f523339e269db212784a84ad7a5958114b1a8bbdc0b&originpath=/linear/hls/pa/event/1A_glPdnQl-73hH4bqX_qw/stream/36d59d13-f0d3-4ac1-a8fc-036c83d779cb:BRU/master.m3u8",
+          "title": "caracol",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ec/CaracolTV2025.png",
+          "type": "sniff",
+          "value": "https://www.tvporinternet2.com/caracol-en-vivo-por-internet.html",
           "requiresVpn": true
         },
          {
-          "title": "RCN",
-          "imageUrl": "https://colombia.mom-gmr.org/uploads/tx_lfrogmom/media/511-941_import.png",
-          "type": "sniff",
-          "value": "https://www.tvporinternet2.com/rcn-en-vivo-por-internet.html",
-          "requiresVpn": true
+          "title": "TELEMUNDO",
+          "imageUrl": "https://i.postimg.cc/J4nB4W3b/photo.jpg",
+          "type": "stream",
+          "value": "https://nbculocallive.akamaized.net/hls/live/2037499/puertorico/stream1/master.m3u8",
+          "requiresVpn": false
         }
     
       ]
