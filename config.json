@@ -65,17 +65,17 @@
         {
           "title": "Antena 3",
           "imageUrl": "https://imagenes.atresplayer.com/atp/clipping/cmsimages01/2025/11/04/75602CF8-7668-4223-B121-3FFFA4177E2E//720x540.jpg",
-          "type": "web",
+          "type": "sniff",
           "value": "https://www.tvporinternet2.com/antena-3-en-vivo-por-internet.html",
           "requiresVpn": true
         },
-   {
-  "title": "RCN",
-  "imageUrl": "https://i.postimg.cc/9FLmKbTY/rcn.png",
-  "type": "sniff",
-  "value": "https://www.tvporinternet2.com/rcn-en-vivo-por-internet.html",
-  "requiresVpn": true
-}
+        {
+          "title": "RCN",
+          "imageUrl": "https://i.postimg.cc/9FLmKbTY/rcn.png",
+          "type": "sniff",
+          "value": "https://www.tvporinternet2.com/rcn-en-vivo-por-internet.html",
+          "requiresVpn": true
+        }
       ]
     },
     {
@@ -84,14 +84,14 @@
         {
           "title": "Movistar Liga de Campeones",
           "imageUrl": "https://i.postimg.cc/rwzVk4N5/movistarligadecampeones.png",
-          "type": "web",
+          "type": "sniff",
           "value": "https://www.tvporinternet2.com/movistar-liga-de-campeones-en-vivo-por-internet.html",
           "requiresVpn": true
         },
         {
           "title": "DAZN F1",
           "imageUrl": "https://i.postimg.cc/YCjrHFzg/daznf1.jpg",
-          "type": "web",
+          "type": "sniff",
           "value": "https://www.tvporinternet2.com/dazn-f1-en-vivo-por-internet.html",
           "requiresVpn": true
         },
@@ -119,42 +119,42 @@
         {
           "title": "ESPN",
           "imageUrl": "https://i.postimg.cc/6pTWXZf3/espn.png",
-          "type": "web",
+          "type": "sniff",
           "value": "https://www.tvporinternet2.com/espn-en-vivo-por-internet.html",
           "requiresVpn": true
         },
         {
           "title": "ESPN 2",
           "imageUrl": "https://i.postimg.cc/sg1jrW42/espn2.png",
-          "type": "web",
+          "type": "sniff",
           "value": "https://www.tvporinternet2.com/espn-2-en-vivo-por-internet.html",
           "requiresVpn": true
         },
         {
           "title": "ESPN 3",
           "imageUrl": "https://i.postimg.cc/3xW8TGFx/espn3.png",
-          "type": "web",
+          "type": "sniff",
           "value": "https://www.tvporinternet2.com/espn-3-en-vivo-por-internet.html",
           "requiresVpn": true
         },
         {
           "title": "ESPN 4",
           "imageUrl": "https://i.postimg.cc/kgDJmSvX/espn4.png",
-          "type": "web",
+          "type": "sniff",
           "value": "https://www.tvporinternet2.com/espn-4-en-vivo-por-internet.html",
           "requiresVpn": true
         },
         {
           "title": "ESPN 5",
           "imageUrl": "https://i.postimg.cc/134mQFrm/espn5.png",
-          "type": "web",
+          "type": "sniff",
           "value": "https://www.tvporinternet2.com/espn-5-en-vivo-por-internet.html",
           "requiresVpn": true
         },
         {
           "title": "ESPN 6",
           "imageUrl": "https://i.postimg.cc/wj3qpNQx/espn6.png",
-          "type": "web",
+          "type": "sniff",
           "value": "https://www.tvporinternet2.com/espn-6-en-vivo-por-internet.html",
           "requiresVpn": true
         }
