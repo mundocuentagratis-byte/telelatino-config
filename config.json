@@ -69,13 +69,13 @@
           "value": "https://www.tvporinternet2.com/antena-3-en-vivo-por-internet.html",
           "requiresVpn": true
         },
-        {
-          "title": "Caracol",
-          "imageUrl": "https://i.postimg.cc/xT6fh5H5/caracol.png",
-          "type": "web",
-          "value": "https://www.tvporinternet2.com/caracol-en-vivo-por-internet.html",
-          "requiresVpn": true
-        },
+      {
+  "title": "Antena 3",
+  "imageUrl": "https://i.postimg.cc/YqdrZRgd/antena3.png",
+  "type": "web_player",
+  "value": "https://www.tvporinternet2.com/antena-3-en-vivo-por-internet.html",
+  "requiresVpn": true
+},
         {
           "title": "RCN",
           "imageUrl": "https://i.postimg.cc/9FLmKbTY/rcn.png",
