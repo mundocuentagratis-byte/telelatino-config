@@ -69,20 +69,13 @@
           "value": "https://www.tvporinternet2.com/antena-3-en-vivo-por-internet.html",
           "requiresVpn": true
         },
-      {
-  "title": "Antena 3",
-  "imageUrl": "https://i.postimg.cc/YqdrZRgd/antena3.png",
-  "type": "web_player",
-  "value": "https://www.tvporinternet2.com/antena-3-en-vivo-por-internet.html",
+   {
+  "title": "RCN",
+  "imageUrl": "https://i.postimg.cc/9FLmKbTY/rcn.png",
+  "type": "sniff",
+  "value": "https://www.tvporinternet2.com/rcn-en-vivo-por-internet.html",
   "requiresVpn": true
-},
-        {
-          "title": "RCN",
-          "imageUrl": "https://i.postimg.cc/9FLmKbTY/rcn.png",
-          "type": "web",
-          "value": "https://www.tvporinternet2.com/rcn-en-vivo-por-internet.html",
-          "requiresVpn": true
-        }
+}
       ]
     },
     {
