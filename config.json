@@ -80,7 +80,7 @@
           "title": "telecinco",
           "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0VMGi4VFB3TsBNlzWkwAd_15nbmB2t9P7lg&s",
           "type": "sniff",
-          "value": "https://www.mediasetinfinity.es/directo/telecinco/",
+          "value": "https://directos.mediasetinfinity.es/orilinear01/live/linear01/main/main.isml/dai.m3u8?hdnea=st=1773004247~exp=1773004547~acl=*~id=a365a844-74e8-4c25-a3e3-db8b4b985bdb~hmac=74bae3a67f40ed126ada6f523339e269db212784a84ad7a5958114b1a8bbdc0b&originpath=/linear/hls/pa/event/1A_glPdnQl-73hH4bqX_qw/stream/36d59d13-f0d3-4ac1-a8fc-036c83d779cb:BRU/master.m3u8",
           "requiresVpn": true
         },
          {
