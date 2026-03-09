@@ -1,10 +1,10 @@
 {
   "estrenos": [
     {
-      "title": "Estreno 1",
-      "imageUrl": "https://i.postimg.cc/3R0f2Q0H/sample1.jpg",
-      "type": "web",
-      "value": "https://www.example.com"
+      "title": "Capitán América",
+      "imageUrl": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/mI6iqk6a1MOIfYfIMQcTDDGEl8h.jpg",
+      "type": "stream",
+      "value": "http://svipapi1.top:8080/movie/VODMAX2171736346336001/e5be38a0beb7/81217.mkv"
     },
     {
       "title": "Estreno 2",
