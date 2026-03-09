@@ -1,0 +1,32 @@
+{
+  "estrenos": [
+    {
+      "title": "Estreno 1",
+      "imageUrl": "https://i.postimg.cc/3R0f2Q0H/sample1.jpg",
+      "type": "web",
+      "value": "https://www.example.com"
+    },
+    {
+      "title": "Estreno 2",
+      "imageUrl": "https://i.postimg.cc/Kz9kL0kB/sample2.jpg",
+      "type": "web",
+      "value": "https://www.example.com"
+    }
+  ],
+  "series": [
+    {
+      "title": "Serie 1",
+      "imageUrl": "https://i.postimg.cc/3xN4Vn07/sample3.jpg",
+      "type": "web",
+      "value": "https://www.example.com"
+    }
+  ],
+  "destacadas": [
+    {
+      "title": "Destacada 1",
+      "imageUrl": "https://i.postimg.cc/Z5qKq0sQ/sample4.jpg",
+      "type": "web",
+      "value": "https://www.example.com"
+    }
+  ]
+}
