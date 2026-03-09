@@ -237,7 +237,29 @@
     },
     {
       "title": "RECOMENDADAS",
-      "items": []
+      "items": [
+           {
+          "title": "CNN",
+          "imageUrl": "https://i.postimg.cc/Zq40P6Kv/In-Shot-20251018-100115631.jpg",
+          "type": "stream",
+          "value": "http://186.0.248.91:20202/Live/9913c1f659b7047034f0dace4cb2111e/CNNesp.playlist.m3u8",
+          "requiresVpn": false
+        },
+         {
+          "title": "FOXSPORT",
+          "imageUrl": "https://i.postimg.cc/bJrmWdy0/In-Shot-20250707-101631684.jpg",
+          "type": "stream",
+          "value": "http://170.246.176.223:12300/Live/ce4f9057196d9a934a172c8a206a893a/local-fox1ar.playlist.m3u8",
+          "requiresVpn": false
+        },
+         {
+          "title": "CINEMAX",
+          "imageUrl": "https://i.postimg.cc/T3CRYqT3/cinemax-285.png",
+          "type": "stream",
+          "value": "http://179.43.101.99/Live/4ebed19e324f278338425a6190627141/local-61.playlist.m3u8",
+          "requiresVpn": false
+        }
+      ]
     }
   ]
 }
