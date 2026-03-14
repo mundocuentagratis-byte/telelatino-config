@@ -1,5 +1,5 @@
 {
-  "appName": "Telelatino",
+  "appName": "Telelatino REMOTO",
   "shareText": "Descarga mi app desde aquí: https://github.com/mundocuentagratis-byte/telelatino-config/releases/download/v1.6/telelatino.apk",
   "menu": [
     {
@@ -42,11 +42,39 @@
           "requiresVpn": false
         },
         {
+          "title": "CUATRO",
+          "imageUrl": "https://docdog.top/logo/countries/spain/movistar/Cuatro.png",
+          "type": "stream",
+          "value": "http://vipdurwendur.top:8080/VIP018801763122959116/95718e29d326/651",
+          "requiresVpn": true
+        },
+        {
           "title": "24h",
           "imageUrl": "https://pbs.twimg.com/profile_images/1634293543987453954/mb1Rzmso_200x200.jpg",
           "type": "stream",
           "value": "https://ztnr.rtve.es/ztnr/1694255.m3u8",
           "requiresVpn": false
+        },
+        {
+          "title": "Teledeporte",
+          "imageUrl": "https://graph.facebook.com/teledeporteRTVE/picture?width=200&height=200",
+          "type": "stream",
+          "value": "https://ztnr.rtve.es/ztnr/1712295.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "Clan",
+          "imageUrl": "https://graph.facebook.com/clantve/picture?width=200&height=200",
+          "type": "stream",
+          "value": "https://ztnr.rtve.es/ztnr/5466990.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "Antena 3",
+          "imageUrl": "https://posters.hyloft.online/1547764643405.png",
+          "type": "sniff",
+          "value": "http://vipdurwendur.top:8080/VIP018801763122959116/95718e29d326/646",
+          "requiresVpn": true
         }
       ]
     },
@@ -54,62 +82,31 @@
       "title": "DEPORTES",
       "items": [
         {
-          "title": "ESPN",
-          "imageUrl": "https://via.placeholder.com/300x300.png?text=ESPN",
+          "title": "Movistar Liga de Campeones",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYyNSlvacMe7R6jPnOKL5Km4z2NvMkFTWEzQ&s",
           "type": "stream",
-          "value": "https://ejemplo.com/deportes/espn.m3u8",
-          "requiresVpn": false
-        },
-        {
-          "title": "DAZN",
-          "imageUrl": "https://via.placeholder.com/300x300.png?text=DAZN",
-          "type": "web_player",
-          "value": "https://ejemplo.com/deportes/dazn",
-          "requiresVpn": false
-        }
-      ]
-    },
-    {
-      "title": "PELICULAS",
-      "items": [
-        {
-          "title": "Acción TV",
-          "imageUrl": "https://via.placeholder.com/300x300.png?text=ACCION+TV",
-          "type": "stream",
-          "value": "https://ejemplo.com/peliculas/acciontv.m3u8",
-          "requiresVpn": false
-        },
-        {
-          "title": "Cine Premium",
-          "imageUrl": "https://via.placeholder.com/300x300.png?text=CINE+PREMIUM",
-          "type": "web_player",
-          "value": "https://ejemplo.com/peliculas/cinepremium",
-          "requiresVpn": false
-        },
-        {
-          "title": "Pelis Online",
-          "imageUrl": "https://via.placeholder.com/300x300.png?text=PELIS+ONLINE",
-          "type": "sniff",
-          "value": "https://ejemplo.com/peliculas/online",
+          "value": "http://vipdurwendur.top:8080/VIP018801763122959116/95718e29d326/264",
           "requiresVpn": true
-        }
-      ]
-    },
-    {
-      "title": "SERIES",
-      "items": [
-        {
-          "title": "Series Plus",
-          "imageUrl": "https://via.placeholder.com/300x300.png?text=SERIES+PLUS",
-          "type": "stream",
-          "value": "https://ejemplo.com/series/plus.m3u8",
-          "requiresVpn": false
         },
         {
-          "title": "Series Web",
-          "imageUrl": "https://via.placeholder.com/300x300.png?text=SERIES+WEB",
-          "type": "web",
-          "value": "https://ejemplo.com/series/web",
+          "title": "M+ LALIGA",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcjh8Fs-FpZOFJe-3UU7fzEeMl9mBAbYh8kA&s",
+          "type": "stream",
+          "value": "http://vipdurwendur.top:8080/VIP018801763122959116/95718e29d326/252",
+          "requiresVpn": true
+        },
+        {
+          "title": "DAZN F1",
+          "imageUrl": "https://i.postimg.cc/YCjrHFzg/daznf1.jpg",
+          "type": "stream",
+          "value": "http://vipdurwendur.top:8080/VIP018801763122959116/95718e29d326/56469",
+          "requiresVpn": true
+        },
+        {
+          "title": "ESPN",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb8gVB_VOZSrxym1jnKzlX2wKwTbTBJDjtYw&s",
+          "type": "stream",
+          "value": "https://tv.topmediatv.net:25463/live/TopMediaWeb/bOteTR8ED1/447.m3u8",
           "requiresVpn": false
         }
       ]
@@ -118,11 +115,18 @@
       "title": "INFANTIL",
       "items": [
         {
-          "title": "Clan",
-          "imageUrl": "https://via.placeholder.com/300x300.png?text=CLAN",
-          "type": "stream",
-          "value": "https://ejemplo.com/infantil/clan.m3u8",
-          "requiresVpn": false
+          "title": "Cartoon Network",
+          "imageUrl": "https://i.postimg.cc/jdxqMmWZ/cartoonnetwork.png",
+          "type": "sniff",
+          "value": "https://www.telegratishd.com/cartoon-network-en-vivo.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "Disney Channel",
+          "imageUrl": "https://i.postimg.cc/BQSZmk8B/disneychannel.png",
+          "type": "sniff",
+          "value": "https://www.telegratishd.com/disney-channel-en-vivo.html",
+          "requiresVpn": true
         }
       ]
     },
@@ -130,10 +134,17 @@
       "title": "PREMIUM",
       "items": [
         {
-          "title": "HBO Canal",
-          "imageUrl": "https://via.placeholder.com/300x300.png?text=HBO",
-          "type": "external",
-          "value": "https://ejemplo.com/hbo",
+          "title": "HBO",
+          "imageUrl": "https://loghi-famosi.com/wp-content/uploads/2020/09/HBO-Simbolo-650x366.jpg",
+          "type": "stream",
+          "value": "https://tv.topmediatv.net:25463/live/TopMediaWeb/bOteTR8ED1/363.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "FX",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUn43mgIkydqItfAYElfXbv0gg-qMcJX4xXQ&s",
+          "type": "sniff",
+          "value": "https://www.telegratishd.com/fx-en-vivo.html",
           "requiresVpn": true
         }
       ]
@@ -142,11 +153,30 @@
       "title": "RECOMENDADAS",
       "items": [
         {
-          "title": "Canal Top",
-          "imageUrl": "https://via.placeholder.com/300x300.png?text=TOP",
+          "title": "MOVISTAR ACCION",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwQpf3bK8lcZBW6dNMJs5kZ2o-4mpMEdmUXQ&s",
           "type": "stream",
-          "value": "https://ejemplo.com/top.m3u8",
+          "value": "http://vipdurwendur.top:8080/VIP018801763122959116/95718e29d326/656",
           "requiresVpn": false
+        },
+        {
+          "title": "FOX SPORT",
+          "imageUrl": "https://i.postimg.cc/bJrmWdy0/In-Shot-20250707-101631684.jpg",
+          "type": "stream",
+          "value": "https://tv.topmediatv.net:25463/live/TopMediaWeb/bOteTR8ED1/459.m3u8",
+          "requiresVpn": false
+        }
+      ]
+    },
+    {
+      "title": "PELICULAS",
+      "items": [
+        {
+          "title": "JPelicreator",
+          "imageUrl": "http://latinostream.xyz:80/images/QCqX5p5x3Y181Q8jwb82JGjTlNUZbU2ocakvb60lfgJdg8pjTQtEnSlwBunllRTX.png",
+          "type": "stream",
+          "value": "http://icomplay.net:80/play/RmNjo_9evgyl8jpUOWhRl4se-uRZqks3DQljLS7Rx7FrMwUucezW6xuX7sdhNZtJ#.mkv",
+          "requiresVpn": true
         }
       ]
     }
