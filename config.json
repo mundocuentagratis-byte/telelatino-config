@@ -343,17 +343,16 @@
           "value": "https://www.telegratishd.com/cinemax-en-vivo.html",
           "requiresVpn": true
         },
-        {
-  "title": "PELICULAS",
-  "items": [
-
+       {
+      "title": "PELICULAS",
+      "items": [
         {
           "title": "pelicreator",
           "imageUrl": "http://latinostream.xyz:80/images/QCqX5p5x3Y181Q8jwb82JGjTlNUZbU2ocakvb60lfgJdg8pjTQtEnSlwBunllRTX.png",
           "type": "stream",
           "value": "http://icomplay.net:80/play/RmNjo_9evgyl8jpUOWhRl4se-uRZqks3DQljLS7Rx7FrMwUucezW6xuX7sdhNZtJ#.mkv",
           "requiresVpn": true
-        },
+        }
       ]
     }
   ]
