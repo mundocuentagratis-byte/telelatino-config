@@ -349,15 +349,8 @@
           "type": "stream",
           "value": "http://icomplay.net:80/play/RmNjo_9evgyl8jpUOWhRl4se-uRZqks3DQljLS7Rx7FrMwUucezW6xuX7sdhNZtJ#.mkv",
           "requiresVpn": true
-        },
-        {
-          "title": "la liga prueba",
-          "imageUrl": "http://onerestream.us:80/images/H8l4FgEC0zFunEkcBk8tmlmpbUws819vN9dIQlubVcP-Bt02OUyNtpgnJoPWue1XMFR2Ue-tZo-kG61aNOEycElgbmUt2JbFtKlCbgH7jXA.png",
-          "type": "stream",
-          "value": "http://icomplay.net:80/play/xsMhoipHrR2xCy_HYxpmaUt2TH_bUSPxflj5-K0tjXL7TVOdOWQuYRHvTBtkaJC8/ts",
-          "requiresVpn": true
         }
-
+      
       ]
     }
   ]
