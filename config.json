@@ -113,7 +113,6 @@
         }
       ]
     },
-
     {
       "title": "DEPORTES",
       "items": [
@@ -158,10 +157,93 @@
           "type": "stream",
           "value": "http://vipdurwendur.top:8080/VIP018801763122959116/95718e29d326/56469",
           "requiresVpn": true
+        },
+        {
+          "title": "ESPN 7 Lat",
+          "imageUrl": "https://i.postimg.cc/xTYp20B9/In-Shot-20251010-211018612.jpg",
+          "type": "stream",
+          "value": "http://170.246.176.223:12300/Live/ce4f9057196d9a934a172c8a206a893a/local-espn7lt.playlist.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "ESPN Premium Lat",
+          "imageUrl": "https://i.postimg.cc/SRDnjRp0/In-Shot-20251018-095209924.jpg",
+          "type": "stream",
+          "value": "http://170.246.176.223:12300/Live/ce4f9057196d9a934a172c8a206a893a/local-espnpremlat.playlist.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "ESPN",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb8gVB_VOZSrxym1jnKzlX2wKwTbTBJDjtYw&s",
+          "type": "stream",
+          "value": "https://tv.topmediatv.net:25463/live/TopMediaWeb/bOteTR8ED1/447.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "ESPN 2",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxRMV2G1q3dXWyhbC_BpMpCWMkfQAigmoiuQ&s",
+          "type": "stream",
+          "value": "http://dplatino.net:80//live/9C00D37FA4FA/D37FA4FA9C00/81259.ts",
+          "requiresVpn": true
+        },
+        {
+          "title": "ESPN 3",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCmUeuQEC16S_wMye50_L7ljaGN17FeT02kA&s",
+          "type": "stream",
+          "value": "http://tv.proyectox.vip:8080/Joesanti0710/70827c3326ad/9533",
+          "requiresVpn": true
+        },
+        {
+          "title": "ESPN 4",
+          "imageUrl": "https://foros.forounivers.com/uploads/monthly_2024_02/large.ESPN4.png.eb49e6eecab0c1a9e2c758279e2a6784.png",
+          "type": "sniff",
+          "value": "https://www.telegratishd.com/espn-4-en-vivo.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "ESPN 5",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy2SfWvS72hAWhFGWsfZ7CslVNhrOj9MIppw&s",
+          "type": "stream",
+          "value": "http://190.171.83.2:4000/play/a0qb/index.m3u8",
+          "requiresVpn": true
+        },
+        {
+          "title": "TNT SPORT PREMIUM",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYcZpYoiEecPCpDU3NUfmGvxVJ2zJFiUQmyw&s",
+          "type": "stream",
+          "value": "http://tv.proyectox.vip:8080/Joesanti0710/70827c3326ad/157585",
+          "requiresVpn": true
+        },
+        {
+          "title": "DIRETTV",
+          "imageUrl": "https://play-lh.googleusercontent.com/OeeL1D_m19xsMRQdhjYaetJukmAUpqRrUW-DKq8Htg2usZ3Oplam7t1tPDXhbVP-ww",
+          "type": "sniff",
+          "value": "https://www.telegratishd.com/directv-sports-en-vivo.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "DAZN LA LIGA",
+          "imageUrl": "https://yt3.googleusercontent.com/Tpd5oPJlZrPG2sveqaegjfCSaEtqfPRppdhv3v2eMDUT94F3AbicfHmSVqWvslLVX5OlUrDq2Q=s900-c-k-c0x00ffffff-no-rj",
+          "type": "stream",
+          "value": "http://vipdurwendur.top:8080/VIP018801763122959116/95718e29d326/243",
+          "requiresVpn": true
+        },
+        {
+          "title": "TUDN",
+          "imageUrl": "https://static.wikia.nocookie.net/youtubepedia/images/3/32/TUDN_M%C3%A9xico.jpg/revision/latest/thumbnail/width/360/height/360?cb=20211120191946&path-prefix=es",
+          "type": "sniff",
+          "value": "https://tv.topmediatv.net:25463/live/TopMediaWeb/bOteTR8ED1/128.m3u8",
+          "requiresVpn": false
+        },
+        {
+          "title": "EUROSPORT",
+          "imageUrl": "https://image.discovery.indazn.com/ca/v2/ca/image?id=1kaqhtrr0kcl11563aff0431p8_image-header_pEs_1661945507000&quality=70",
+          "type": "stream",
+          "value": "http://vipdurwendur.top:8080/VIP018801763122959116/95718e29d326/281",
+          "requiresVpn": true
         }
       ]
     },
-
     {
       "title": "INFANTIL",
       "items": [
@@ -188,7 +270,6 @@
         }
       ]
     },
-
     {
       "title": "PREMIUM",
       "items": [
@@ -205,10 +286,37 @@
           "type": "stream",
           "value": "https://tv.topmediatv.net:25463/live/TopMediaWeb/bOteTR8ED1/363.m3u8",
           "requiresVpn": false
+        },
+        {
+          "title": "Space",
+          "imageUrl": "https://i.postimg.cc/zXhpn8Bs/Space-285.png",
+          "type": "sniff",
+          "value": "https://www.telegratishd.com/space-en-vivo.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "TNT",
+          "imageUrl": "https://static.wikia.nocookie.net/esstarwars/images/2/2c/Tnt_logo.png/revision/latest?cb=20091230061033",
+          "type": "sniff",
+          "value": "https://www.telegratishd.com/tnt-en-vivo.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "FX",
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUn43mgIkydqItfAYElfXbv0gg-qMcJX4xXQ&s",
+          "type": "sniff",
+          "value": "https://www.telegratishd.com/fx-en-vivo.html",
+          "requiresVpn": true
+        },
+        {
+          "title": "CINECANAL",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Cinecanal_1995.png",
+          "type": "sniff",
+          "value": "http://181.114.57.246:4000/play/AS2ESM6kwGDqHCaX/index.m3u8",
+          "requiresVpn": true
         }
       ]
     },
-
     {
       "title": "RECOMENDADAS",
       "items": [
@@ -235,12 +343,11 @@
         }
       ]
     },
-
     {
       "title": "PELICULAS",
       "items": [
         {
-          "title": "jpelicreator",
+          "title": "pelicreator",
           "imageUrl": "http://latinostream.xyz:80/images/QCqX5p5x3Y181Q8jwb82JGjTlNUZbU2ocakvb60lfgJdg8pjTQtEnSlwBunllRTX.png",
           "type": "stream",
           "value": "http://icomplay.net:80/play/RmNjo_9evgyl8jpUOWhRl4se-uRZqks3DQljLS7Rx7FrMwUucezW6xuX7sdhNZtJ#.mkv",
