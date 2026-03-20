@@ -1,7 +1,7 @@
 {
   "latestVersionCode": 6,
-  "minimumVersionCode": 8,
-  "latestVersionName": "1.7",
-  "apkUrl": "https://github.com/mundocuentagratis-byte/telelatino-config/releases/download/v1.7/telelatino.apk",
+  "minimumVersionCode": 9,
+  "latestVersionName": "1.8",
+  "apkUrl": "https://github.com/mundocuentagratis-byte/telelatino-config/releases/download/v1.8/telelatino.apk",
   "message": "Hay una nueva versión disponible."
 }
