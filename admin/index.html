@@ -6,148 +6,274 @@
   <title>Panel Admin TeleLatino</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #071426;
-      color: white;
-      padding: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #031225, #061b46, #07102e);
+      color: #ffffff;
+      min-height: 100vh;
+      padding: 24px;
     }
 
     h1 {
-      color: #ffb22c;
-      margin-bottom: 5px;
+      color: #ffd45c;
+      font-size: 38px;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: #dce6ff;
+      margin-bottom: 24px;
+      font-size: 16px;
     }
 
     .card {
-      background: #142442;
-      border: 1px solid #30466f;
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 18px;
+      background: rgba(10, 42, 120, 0.62);
+      border: 1px solid rgba(120, 160, 255, 0.35);
+      border-radius: 20px;
+      padding: 22px;
+      margin-bottom: 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #ffffff;
+      font-size: 28px;
     }
 
     button {
       border: none;
-      border-radius: 12px;
-      padding: 12px 16px;
-      font-size: 15px;
-      font-weight: bold;
+      border-radius: 14px;
+      padding: 12px 18px;
       cursor: pointer;
-      margin: 4px;
+      font-weight: bold;
+      font-size: 15px;
     }
 
-    .btn-main {
+    .btn-google {
+      background: #ffffff;
+      color: #1b1730;
+    }
+
+    .btn-refresh {
       background: #cdb4ff;
       color: #10182e;
+      margin-top: 12px;
     }
 
     .btn-vip {
-      background: #ffb22c;
-      color: #10182e;
+      background: #ffd45c;
+      color: #1b1730;
+      margin: 4px;
+      min-width: 130px;
     }
 
-    .btn-danger {
-      background: #d9534f;
-      color: white;
+    .btn-remove {
+      background: #ff6b7a;
+      color: #ffffff;
+      margin: 4px;
+      min-width: 130px;
+    }
+
+    .btn-logout {
+      background: #ff6b7a;
+      color: #ffffff;
+      margin-top: 10px;
     }
 
     input {
       width: 100%;
-      padding: 12px;
+      padding: 15px;
       border-radius: 12px;
       border: none;
-      margin-bottom: 12px;
+      outline: none;
       font-size: 15px;
+      margin-top: 10px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 22px 0;
+    }
+
+    .stat-card {
+      background: rgba(15, 58, 150, 0.65);
+      border: 1px solid rgba(120, 160, 255, 0.35);
+      border-radius: 18px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 34px;
+      font-weight: 800;
+      color: #ffd45c;
+    }
+
+    .stat-label {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #dce6ff;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      width: 100%;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      background: #142442;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    th, td {
-      padding: 12px;
-      border-bottom: 1px solid #30466f;
-      text-align: left;
-      font-size: 14px;
-      word-break: break-word;
+      min-width: 900px;
     }
 
     th {
-      background: #1d3158;
-      color: #ffb22c;
+      background: rgba(20, 100, 220, 0.55);
+      color: #ffd45c;
+      text-align: left;
+      padding: 14px;
+      font-size: 14px;
     }
 
-    .status-vip {
-      color: #41d36e;
-      font-weight: bold;
-    }
-
-    .status-free {
-      color: #ffb22c;
-      font-weight: bold;
+    td {
+      padding: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+      font-size: 14px;
+      color: #ffffff;
+      vertical-align: middle;
     }
 
     .small {
+      font-size: 12px;
       color: #bfc4d8;
-      font-size: 13px;
+      word-break: break-all;
+    }
+
+    .status-trial {
+      color: #ffd45c;
+      font-weight: bold;
+    }
+
+    .status-vip {
+      color: #5CFF9D;
+      font-weight: bold;
+    }
+
+    .status-expired {
+      color: #ff8b8b;
+      font-weight: bold;
     }
 
     .hidden {
       display: none;
+    }
+
+    .message {
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255, 212, 92, 0.14);
+      color: #ffd45c;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 800px) {
+      body {
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
 
 <body>
   <h1>Panel Admin TeleLatino</h1>
-  <p class="small">Gestiona usuarios, VIP y vencimientos.</p>
+  <div class="subtitle">Gestiona usuarios, VIP y vencimientos.</div>
 
-  <div id="loginBox" class="card">
+  <section id="loginCard" class="card">
     <h2>Iniciar sesión</h2>
     <p>Entra con tu cuenta administradora de Google.</p>
-    <button id="btnLogin" class="btn-main">Entrar con Google</button>
-  </div>
+    <button id="btnLogin" class="btn-google">Entrar con Google</button>
+    <div id="loginMessage" class="message hidden"></div>
+  </section>
 
-  <div id="adminBox" class="hidden">
-    <div class="card">
-      <h2>Administrador</h2>
-      <p id="adminEmail" class="small"></p>
-      <button id="btnLogout" class="btn-danger">Cerrar sesión</button>
+  <section id="adminCard" class="card hidden">
+    <h2>Administrador</h2>
+    <p>Sesión iniciada como: <b id="adminEmail">-</b></p>
+    <button id="btnLogout" class="btn-logout">Cerrar sesión</button>
+  </section>
+
+  <div id="statsBox" class="stats-grid hidden">
+    <div class="stat-card">
+      <div class="stat-number" id="statTotal">0</div>
+      <div class="stat-label">Usuarios registrados</div>
     </div>
 
-    <div class="card">
-      <h2>Buscar usuario</h2>
-      <input id="searchInput" placeholder="Buscar por email o ID de usuario..." />
-      <button id="btnReload" class="btn-main">Actualizar lista</button>
+    <div class="stat-card">
+      <div class="stat-number" id="statTrial">0</div>
+      <div class="stat-label">En prueba</div>
     </div>
 
-    <div class="card">
-      <h2>Usuarios registrados</h2>
-      <div style="overflow-x:auto;">
-        <table>
-          <thead>
-            <tr>
-              <th>Email</th>
-              <th>ID usuario</th>
-              <th>Estado</th>
-              <th>VIP hasta</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody id="usersTable">
-            <tr>
-              <td colspan="5">Cargando usuarios...</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="stat-card">
+      <div class="stat-number" id="statVip">0</div>
+      <div class="stat-label">VIP activos</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-number" id="statExpired">0</div>
+      <div class="stat-label">Vencidos / gratis</div>
     </div>
   </div>
+
+  <section id="searchCard" class="card hidden">
+    <h2>Buscar usuario</h2>
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Buscar por email o ID de usuario..."
+    />
+    <button id="btnRefresh" class="btn-refresh">Actualizar lista</button>
+    <div id="actionMessage" class="message hidden"></div>
+  </section>
+
+  <section id="usersCard" class="card hidden">
+    <h2>Usuarios registrados</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>ID usuario</th>
+            <th>Estado</th>
+            <th>Prueba hasta</th>
+            <th>VIP hasta</th>
+            <th>Último login</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="usersTable">
+          <tr>
+            <td colspan="7">Cargando usuarios...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
@@ -164,8 +290,7 @@
       collection,
       getDocs,
       doc,
-      updateDoc,
-      serverTimestamp
+      updateDoc
     } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -185,24 +310,33 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
 
-    const loginBox = document.getElementById("loginBox");
-    const adminBox = document.getElementById("adminBox");
+    const loginCard = document.getElementById("loginCard");
+    const adminCard = document.getElementById("adminCard");
+    const searchCard = document.getElementById("searchCard");
+    const usersCard = document.getElementById("usersCard");
+    const statsBox = document.getElementById("statsBox");
+
     const btnLogin = document.getElementById("btnLogin");
     const btnLogout = document.getElementById("btnLogout");
-    const btnReload = document.getElementById("btnReload");
+    const btnRefresh = document.getElementById("btnRefresh");
+
     const adminEmail = document.getElementById("adminEmail");
     const usersTable = document.getElementById("usersTable");
     const searchInput = document.getElementById("searchInput");
+
+    const loginMessage = document.getElementById("loginMessage");
+    const actionMessage = document.getElementById("actionMessage");
 
     let allUsers = [];
 
     btnLogin.addEventListener("click", async () => {
       try {
-        const provider = new GoogleAuthProvider();
+        hideMessage(loginMessage);
         await signInWithPopup(auth, provider);
       } catch (error) {
-        alert("Error al iniciar sesión: " + error.message);
+        showMessage(loginMessage, "Error al iniciar sesión: " + error.message);
       }
     });
 
@@ -210,8 +344,8 @@
       await signOut(auth);
     });
 
-    btnReload.addEventListener("click", () => {
-      loadUsers();
+    btnRefresh.addEventListener("click", async () => {
+      await loadUsers();
     });
 
     searchInput.addEventListener("input", () => {
@@ -220,193 +354,268 @@
 
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
-        loginBox.classList.remove("hidden");
-        adminBox.classList.add("hidden");
+        showLogin();
         return;
       }
 
       if (!ADMIN_EMAILS.includes(user.email)) {
-        alert("Este correo no está autorizado como administrador: " + user.email);
+        showLogin();
+        showMessage(loginMessage, "Esta cuenta no está autorizada como administrador.");
         await signOut(auth);
         return;
       }
 
-      loginBox.classList.add("hidden");
-      adminBox.classList.remove("hidden");
-      adminEmail.textContent = "Sesión iniciada como: " + user.email;
-
-      loadUsers();
+      showAdmin(user);
+      await loadUsers();
     });
 
+    function showLogin() {
+      loginCard.classList.remove("hidden");
+      adminCard.classList.add("hidden");
+      searchCard.classList.add("hidden");
+      usersCard.classList.add("hidden");
+      statsBox.classList.add("hidden");
+    }
+
+    function showAdmin(user) {
+      loginCard.classList.add("hidden");
+      adminCard.classList.remove("hidden");
+      searchCard.classList.remove("hidden");
+      usersCard.classList.remove("hidden");
+      statsBox.classList.remove("hidden");
+
+      adminEmail.textContent = user.email || "-";
+    }
+
     async function loadUsers() {
-      usersTable.innerHTML = `
-        <tr>
-          <td colspan="5">Cargando usuarios...</td>
-        </tr>
-      `;
-
       try {
-        const snap = await getDocs(collection(db, "users"));
+        showMessage(actionMessage, "Cargando usuarios...");
 
-        allUsers = [];
+        const snapshot = await getDocs(collection(db, "users"));
 
-        snap.forEach((docSnap) => {
-          const data = docSnap.data();
-
-          allUsers.push({
-            id: docSnap.id,
-            uid: data.uid || docSnap.id,
-            email: data.email || "",
-            status: data.status || "",
-            vip: data.vip || false,
-            vipUntil: data.vipUntil || "",
-            trialUntil: data.trialUntil || "",
-            lastLoginAt: data.lastLoginAt || ""
-          });
+        allUsers = snapshot.docs.map((document) => {
+          return {
+            id: document.id,
+            ...document.data()
+          };
         });
 
         allUsers.sort((a, b) => {
-          return String(a.email).localeCompare(String(b.email));
+          const aTime = Number(a.lastLoginAt || a.createdAt || 0);
+          const bTime = Number(b.lastLoginAt || b.createdAt || 0);
+          return bTime - aTime;
         });
 
         renderUsers();
+        updateStats(allUsers);
 
+        showMessage(actionMessage, "Lista actualizada correctamente.");
       } catch (error) {
-        usersTable.innerHTML = `
-          <tr>
-            <td colspan="5">Error cargando usuarios: ${error.message}</td>
-          </tr>
-        `;
+        console.error(error);
+        showMessage(actionMessage, "Error cargando usuarios: " + error.message);
       }
     }
 
     function renderUsers() {
       const query = searchInput.value.trim().toLowerCase();
 
-      const filtered = allUsers.filter((user) => {
-        return (
-          user.email.toLowerCase().includes(query) ||
-          user.uid.toLowerCase().includes(query)
-        );
-      });
+      let users = allUsers;
 
-      if (filtered.length === 0) {
+      if (query) {
+        users = allUsers.filter((user) => {
+          const email = String(user.email || "").toLowerCase();
+          const uid = String(user.uid || user.id || "").toLowerCase();
+
+          return email.includes(query) || uid.includes(query);
+        });
+      }
+
+      if (users.length === 0) {
         usersTable.innerHTML = `
           <tr>
-            <td colspan="5">No se encontraron usuarios.</td>
+            <td colspan="7">No se encontraron usuarios.</td>
           </tr>
         `;
         return;
       }
 
-      usersTable.innerHTML = "";
+      usersTable.innerHTML = users.map((user) => {
+        const uid = user.uid || user.id || "-";
+        const email = user.email || "-";
+        const status = user.status || "-";
 
-      filtered.forEach((user) => {
-        const tr = document.createElement("tr");
-
-        const estado = user.vip
-          ? `<span class="status-vip">VIP activo</span>`
-          : `<span class="status-free">${user.status || "Gratis"}</span>`;
-
-        tr.innerHTML = `
-          <td>${escapeHtml(user.email || "-")}</td>
-          <td>${escapeHtml(user.uid || "-")}</td>
-          <td>${estado}</td>
-          <td>${escapeHtml(user.vipUntil || "-")}</td>
-          <td>
-            <button class="btn-vip" data-action="vip6" data-uid="${user.id}">
-              Activar 6 meses
-            </button>
-            <button class="btn-danger" data-action="removeVip" data-uid="${user.id}">
-              Quitar VIP
-            </button>
-          </td>
+        return `
+          <tr>
+            <td>${escapeHtml(email)}</td>
+            <td class="small">${escapeHtml(uid)}</td>
+            <td>${statusBadge(user)}</td>
+            <td>${formatDate(user.trialUntil)}</td>
+            <td>${formatDate(user.vipUntil)}</td>
+            <td>${formatDateTime(user.lastLoginAt)}</td>
+            <td>
+              <button class="btn-vip" onclick="activateVip('${uid}')">Activar 6 meses</button>
+              <button class="btn-remove" onclick="removeVip('${uid}')">Quitar VIP</button>
+            </td>
+          </tr>
         `;
-
-        usersTable.appendChild(tr);
-      });
-
-      document.querySelectorAll("[data-action='vip6']").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          activateVip6Months(btn.dataset.uid);
-        });
-      });
-
-      document.querySelectorAll("[data-action='removeVip']").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          removeVip(btn.dataset.uid);
-        });
-      });
+      }).join("");
     }
 
-    async function activateVip6Months(uid) {
-      const user = allUsers.find(u => u.id === uid);
+    function updateStats(users) {
+      const total = users.length;
 
-      if (!user) return;
+      const trial = users.filter((user) => {
+        return user.status === "trial";
+      }).length;
 
-      const ok = confirm(
-        "¿Activar VIP 6 meses para este usuario?\n\n" +
-        user.email + "\n" +
-        user.uid
-      );
+      const vip = users.filter((user) => {
+        return user.vip === true || user.status === "vip";
+      }).length;
 
-      if (!ok) return;
+      const expired = users.filter((user) => {
+        return (
+          user.status === "expired" ||
+          user.status === "free_only" ||
+          user.status === "inactive"
+        );
+      }).length;
 
-      const now = new Date();
-      const vipUntil = new Date(now);
-      vipUntil.setMonth(vipUntil.getMonth() + 6);
+      document.getElementById("statTotal").textContent = total;
+      document.getElementById("statTrial").textContent = trial;
+      document.getElementById("statVip").textContent = vip;
+      document.getElementById("statExpired").textContent = expired;
+    }
 
-      const vipUntilText = vipUntil.toISOString().slice(0, 10);
+    window.activateVip = async function(uid) {
+      if (!uid || uid === "-") {
+        alert("ID de usuario no válido.");
+        return;
+      }
+
+      const confirmed = confirm("¿Activar VIP 6 meses para este usuario?");
+      if (!confirmed) return;
 
       try {
+        const now = Date.now();
+        const sixMonths = 183 * 24 * 60 * 60 * 1000;
+        const vipUntil = now + sixMonths;
+
         await updateDoc(doc(db, "users", uid), {
           vip: true,
-          vipUntil: vipUntilText,
           status: "vip",
-          updatedAt: Date.now(),
-          updatedAtServer: serverTimestamp()
+          vipUntil: vipUntil,
+          lastAdminUpdateAt: now
         });
 
-        alert("VIP activado hasta: " + vipUntilText);
+        showMessage(actionMessage, "VIP activado por 6 meses.");
         await loadUsers();
-
       } catch (error) {
+        console.error(error);
         alert("Error activando VIP: " + error.message);
       }
-    }
+    };
 
-    async function removeVip(uid) {
-      const user = allUsers.find(u => u.id === uid);
+    window.removeVip = async function(uid) {
+      if (!uid || uid === "-") {
+        alert("ID de usuario no válido.");
+        return;
+      }
 
-      if (!user) return;
-
-      const ok = confirm(
-        "¿Quitar VIP a este usuario?\n\n" +
-        user.email + "\n" +
-        user.uid
-      );
-
-      if (!ok) return;
+      const confirmed = confirm("¿Seguro que quieres quitar el VIP?");
+      if (!confirmed) return;
 
       try {
+        const now = Date.now();
+
         await updateDoc(doc(db, "users", uid), {
           vip: false,
-          vipUntil: null,
           status: "expired",
-          updatedAt: Date.now(),
-          updatedAtServer: serverTimestamp()
+          vipUntil: null,
+          lastAdminUpdateAt: now
         });
 
-        alert("VIP quitado correctamente.");
+        showMessage(actionMessage, "VIP quitado correctamente.");
         await loadUsers();
-
       } catch (error) {
+        console.error(error);
         alert("Error quitando VIP: " + error.message);
       }
+    };
+
+    function statusBadge(user) {
+      const status = user.status || "-";
+
+      if (user.vip === true || status === "vip") {
+        return `<span class="status-vip">VIP</span>`;
+      }
+
+      if (status === "trial") {
+        return `<span class="status-trial">trial</span>`;
+      }
+
+      if (status === "expired" || status === "free_only" || status === "inactive") {
+        return `<span class="status-expired">${escapeHtml(status)}</span>`;
+      }
+
+      return escapeHtml(status);
+    }
+
+    function formatDate(value) {
+      if (!value) return "-";
+
+      let date;
+
+      if (typeof value === "number") {
+        date = new Date(value);
+      } else if (typeof value === "string") {
+        if (/^\d+$/.test(value)) {
+          date = new Date(Number(value));
+        } else {
+          date = new Date(value);
+        }
+      } else {
+        return "-";
+      }
+
+      if (isNaN(date.getTime())) return "-";
+
+      return date.toLocaleDateString("es-ES");
+    }
+
+    function formatDateTime(value) {
+      if (!value) return "-";
+
+      let date;
+
+      if (typeof value === "number") {
+        date = new Date(value);
+      } else if (typeof value === "string") {
+        if (/^\d+$/.test(value)) {
+          date = new Date(Number(value));
+        } else {
+          date = new Date(value);
+        }
+      } else {
+        return "-";
+      }
+
+      if (isNaN(date.getTime())) return "-";
+
+      return date.toLocaleString("es-ES");
+    }
+
+    function showMessage(element, text) {
+      element.textContent = text;
+      element.classList.remove("hidden");
+    }
+
+    function hideMessage(element) {
+      element.textContent = "";
+      element.classList.add("hidden");
     }
 
     function escapeHtml(value) {
-      return String(value)
+      return String(value || "")
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;")
