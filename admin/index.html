@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin TeleLatino</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #071426;
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #ffb22c;
+      margin-bottom: 5px;
+    }
+
+    .card {
+      background: #142442;
+      border: 1px solid #30466f;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    button {
+      border: none;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 4px;
+    }
+
+    .btn-main {
+      background: #cdb4ff;
+      color: #10182e;
+    }
+
+    .btn-vip {
+      background: #ffb22c;
+      color: #10182e;
+    }
+
+    .btn-danger {
+      background: #d9534f;
+      color: white;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #142442;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #30466f;
+      text-align: left;
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    th {
+      background: #1d3158;
+      color: #ffb22c;
+    }
+
+    .status-vip {
+      color: #41d36e;
+      font-weight: bold;
+    }
+
+    .status-free {
+      color: #ffb22c;
+      font-weight: bold;
+    }
+
+    .small {
+      color: #bfc4d8;
+      font-size: 13px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Panel Admin TeleLatino</h1>
+  <p class="small">Gestiona usuarios, VIP y vencimientos.</p>
+
+  <div id="loginBox" class="card">
+    <h2>Iniciar sesión</h2>
+    <p>Entra con tu cuenta administradora de Google.</p>
+    <button id="btnLogin" class="btn-main">Entrar con Google</button>
+  </div>
+
+  <div id="adminBox" class="hidden">
+    <div class="card">
+      <h2>Administrador</h2>
+      <p id="adminEmail" class="small"></p>
+      <button id="btnLogout" class="btn-danger">Cerrar sesión</button>
+    </div>
+
+    <div class="card">
+      <h2>Buscar usuario</h2>
+      <input id="searchInput" placeholder="Buscar por email o ID de usuario..." />
+      <button id="btnReload" class="btn-main">Actualizar lista</button>
+    </div>
+
+    <div class="card">
+      <h2>Usuarios registrados</h2>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>ID usuario</th>
+              <th>Estado</th>
+              <th>VIP hasta</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="usersTable">
+            <tr>
+              <td colspan="5">Cargando usuarios...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+    import {
+      getAuth,
+      GoogleAuthProvider,
+      signInWithPopup,
+      signOut,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+
+    import {
+      getFirestore,
+      collection,
+      getDocs,
+      doc,
+      updateDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDkvmnUV0R4nwBNVq_sLvEwMWzYsns8YvM",
+      authDomain: "telelatino-86fe9.firebaseapp.com",
+      projectId: "telelatino-86fe9",
+      storageBucket: "telelatino-86fe9.firebasestorage.app",
+      messagingSenderId: "1082892092881",
+      appId: "1:1082892092881:web:f80d739fb3f5c46f4d4cf0",
+      measurementId: "G-7M53BKDD3T"
+    };
+
+    const ADMIN_EMAILS = [
+      "mundocuentagratis@gmail.com"
+    ];
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const loginBox = document.getElementById("loginBox");
+    const adminBox = document.getElementById("adminBox");
+    const btnLogin = document.getElementById("btnLogin");
+    const btnLogout = document.getElementById("btnLogout");
+    const btnReload = document.getElementById("btnReload");
+    const adminEmail = document.getElementById("adminEmail");
+    const usersTable = document.getElementById("usersTable");
+    const searchInput = document.getElementById("searchInput");
+
+    let allUsers = [];
+
+    btnLogin.addEventListener("click", async () => {
+      try {
+        const provider = new GoogleAuthProvider();
+        await signInWithPopup(auth, provider);
+      } catch (error) {
+        alert("Error al iniciar sesión: " + error.message);
+      }
+    });
+
+    btnLogout.addEventListener("click", async () => {
+      await signOut(auth);
+    });
+
+    btnReload.addEventListener("click", () => {
+      loadUsers();
+    });
+
+    searchInput.addEventListener("input", () => {
+      renderUsers();
+    });
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        loginBox.classList.remove("hidden");
+        adminBox.classList.add("hidden");
+        return;
+      }
+
+      if (!ADMIN_EMAILS.includes(user.email)) {
+        alert("Este correo no está autorizado como administrador: " + user.email);
+        await signOut(auth);
+        return;
+      }
+
+      loginBox.classList.add("hidden");
+      adminBox.classList.remove("hidden");
+      adminEmail.textContent = "Sesión iniciada como: " + user.email;
+
+      loadUsers();
+    });
+
+    async function loadUsers() {
+      usersTable.innerHTML = `
+        <tr>
+          <td colspan="5">Cargando usuarios...</td>
+        </tr>
+      `;
+
+      try {
+        const snap = await getDocs(collection(db, "users"));
+
+        allUsers = [];
+
+        snap.forEach((docSnap) => {
+          const data = docSnap.data();
+
+          allUsers.push({
+            id: docSnap.id,
+            uid: data.uid || docSnap.id,
+            email: data.email || "",
+            status: data.status || "",
+            vip: data.vip || false,
+            vipUntil: data.vipUntil || "",
+            trialUntil: data.trialUntil || "",
+            lastLoginAt: data.lastLoginAt || ""
+          });
+        });
+
+        allUsers.sort((a, b) => {
+          return String(a.email).localeCompare(String(b.email));
+        });
+
+        renderUsers();
+
+      } catch (error) {
+        usersTable.innerHTML = `
+          <tr>
+            <td colspan="5">Error cargando usuarios: ${error.message}</td>
+          </tr>
+        `;
+      }
+    }
+
+    function renderUsers() {
+      const query = searchInput.value.trim().toLowerCase();
+
+      const filtered = allUsers.filter((user) => {
+        return (
+          user.email.toLowerCase().includes(query) ||
+          user.uid.toLowerCase().includes(query)
+        );
+      });
+
+      if (filtered.length === 0) {
+        usersTable.innerHTML = `
+          <tr>
+            <td colspan="5">No se encontraron usuarios.</td>
+          </tr>
+        `;
+        return;
+      }
+
+      usersTable.innerHTML = "";
+
+      filtered.forEach((user) => {
+        const tr = document.createElement("tr");
+
+        const estado = user.vip
+          ? `<span class="status-vip">VIP activo</span>`
+          : `<span class="status-free">${user.status || "Gratis"}</span>`;
+
+        tr.innerHTML = `
+          <td>${escapeHtml(user.email || "-")}</td>
+          <td>${escapeHtml(user.uid || "-")}</td>
+          <td>${estado}</td>
+          <td>${escapeHtml(user.vipUntil || "-")}</td>
+          <td>
+            <button class="btn-vip" data-action="vip6" data-uid="${user.id}">
+              Activar 6 meses
+            </button>
+            <button class="btn-danger" data-action="removeVip" data-uid="${user.id}">
+              Quitar VIP
+            </button>
+          </td>
+        `;
+
+        usersTable.appendChild(tr);
+      });
+
+      document.querySelectorAll("[data-action='vip6']").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          activateVip6Months(btn.dataset.uid);
+        });
+      });
+
+      document.querySelectorAll("[data-action='removeVip']").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          removeVip(btn.dataset.uid);
+        });
+      });
+    }
+
+    async function activateVip6Months(uid) {
+      const user = allUsers.find(u => u.id === uid);
+
+      if (!user) return;
+
+      const ok = confirm(
+        "¿Activar VIP 6 meses para este usuario?\n\n" +
+        user.email + "\n" +
+        user.uid
+      );
+
+      if (!ok) return;
+
+      const now = new Date();
+      const vipUntil = new Date(now);
+      vipUntil.setMonth(vipUntil.getMonth() + 6);
+
+      const vipUntilText = vipUntil.toISOString().slice(0, 10);
+
+      try {
+        await updateDoc(doc(db, "users", uid), {
+          vip: true,
+          vipUntil: vipUntilText,
+          status: "vip",
+          updatedAt: Date.now(),
+          updatedAtServer: serverTimestamp()
+        });
+
+        alert("VIP activado hasta: " + vipUntilText);
+        await loadUsers();
+
+      } catch (error) {
+        alert("Error activando VIP: " + error.message);
+      }
+    }
+
+    async function removeVip(uid) {
+      const user = allUsers.find(u => u.id === uid);
+
+      if (!user) return;
+
+      const ok = confirm(
+        "¿Quitar VIP a este usuario?\n\n" +
+        user.email + "\n" +
+        user.uid
+      );
+
+      if (!ok) return;
+
+      try {
+        await updateDoc(doc(db, "users", uid), {
+          vip: false,
+          vipUntil: null,
+          status: "expired",
+          updatedAt: Date.now(),
+          updatedAtServer: serverTimestamp()
+        });
+
+        alert("VIP quitado correctamente.");
+        await loadUsers();
+
+      } catch (error) {
+        alert("Error quitando VIP: " + error.message);
+      }
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+  </script>
+</body>
+</html>
