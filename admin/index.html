@@ -318,8 +318,7 @@
       collection,
       getDocs,
       doc,
-      updateDoc,
-      onSnapshot
+      updateDoc
     } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -360,7 +359,6 @@
 
     let allUsers = [];
     let allDevices = [];
-    let devicesUnsubscribe = null;
 
     btnLogin.addEventListener("click", async () => {
       try {
@@ -372,11 +370,6 @@
     });
 
     btnLogout.addEventListener("click", async () => {
-      if (devicesUnsubscribe) {
-        devicesUnsubscribe();
-        devicesUnsubscribe = null;
-      }
-
       await signOut(auth);
     });
 
@@ -402,8 +395,7 @@
       }
 
       showAdmin(user);
-      await loadUsers();
-      listenDevicesRealtime();
+      await loadUsers(); // Carga unificada y segura sin flujos en segundo plano
     });
 
     function showLogin() {
@@ -426,11 +418,20 @@
 
     async function loadUsers() {
       try {
-        showMessage(actionMessage, "Cargando usuarios...");
+        showMessage(actionMessage, "Actualizando datos desde Firebase...");
 
-        const snapshot = await getDocs(collection(db, "users"));
+        // 1. Descarga controlada de la colección de usuarios
+        const usersSnapshot = await getDocs(collection(db, "users"));
+        allUsers = usersSnapshot.docs.map((document) => {
+          return {
+            id: document.id,
+            ...document.data()
+          };
+        });
 
-        allUsers = snapshot.docs.map((document) => {
+        // 2. Descarga única de dispositivos para calcular estadísticas offline/online
+        const devicesSnapshot = await getDocs(collection(db, "devices"));
+        allDevices = devicesSnapshot.docs.map((document) => {
           return {
             id: document.id,
             ...document.data()
@@ -449,29 +450,8 @@
         showMessage(actionMessage, "Lista actualizada correctamente.");
       } catch (error) {
         console.error(error);
-        showMessage(actionMessage, "Error cargando usuarios: " + error.message);
+        showMessage(actionMessage, "Error cargando datos: " + error.message);
       }
-    }
-
-    function listenDevicesRealtime() {
-      if (devicesUnsubscribe) {
-        devicesUnsubscribe();
-      }
-
-      devicesUnsubscribe = onSnapshot(collection(db, "devices"), (snapshot) => {
-        allDevices = snapshot.docs.map((document) => {
-          return {
-            id: document.id,
-            ...document.data()
-          };
-        });
-
-        updateStats(allUsers);
-        renderUsers();
-      }, (error) => {
-        console.error("Error escuchando devices:", error);
-        showMessage(actionMessage, "Error leyendo actividad en tiempo real: " + error.message);
-      });
     }
 
     function renderUsers() {
@@ -601,6 +581,7 @@
         const sixMonths = 183 * 24 * 60 * 60 * 1000;
         const vipUntil = now + sixMonths;
 
+        // Guarda el cambio (1 escritura)
         await updateDoc(doc(db, "users", uid), {
           vip: true,
           status: "vip",
@@ -608,8 +589,18 @@
           lastAdminUpdateAt: now
         });
 
-        showMessage(actionMessage, "VIP activado por 6 meses.");
-        await loadUsers();
+        // Actualización local en caliente sin re-solicitar a Firestore
+        const userIndex = allUsers.findIndex(u => (u.uid === uid || u.id === uid));
+        if (userIndex !== -1) {
+          allUsers[userIndex].vip = true;
+          allUsers[userIndex].status = "vip";
+          allUsers[userIndex].vipUntil = vipUntil;
+        }
+
+        renderUsers();
+        updateStats(allUsers);
+
+        showMessage(actionMessage, "VIP activado por 6 meses (Refrescado de forma local).");
       } catch (error) {
         console.error(error);
         alert("Error activando VIP: " + error.message);
@@ -628,6 +619,7 @@
       try {
         const now = Date.now();
 
+        // Guarda el cambio (1 escritura)
         await updateDoc(doc(db, "users", uid), {
           vip: false,
           status: "expired",
@@ -635,8 +627,18 @@
           lastAdminUpdateAt: now
         });
 
-        showMessage(actionMessage, "VIP quitado correctamente.");
-        await loadUsers();
+        // Actualización local en caliente sin re-solicitar a Firestore
+        const userIndex = allUsers.findIndex(u => (u.uid === uid || u.id === uid));
+        if (userIndex !== -1) {
+          allUsers[userIndex].vip = false;
+          allUsers[userIndex].status = "expired";
+          allUsers[userIndex].vipUntil = null;
+        }
+
+        renderUsers();
+        updateStats(allUsers);
+
+        showMessage(actionMessage, "VIP quitado correctamente (Refrescado de forma local).");
       } catch (error) {
         console.error(error);
         alert("Error quitando VIP: " + error.message);
