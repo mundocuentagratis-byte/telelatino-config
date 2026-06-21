@@ -76,6 +76,25 @@
       margin-top: 12px;
     }
 
+    .btn-email {
+      background: #00d084;
+      color: #07102e;
+      margin-top: 12px;
+    }
+
+    .btn-sent {
+      background: #4da3ff;
+      color: #ffffff;
+      margin-top: 12px;
+    }
+
+    .email-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
     .btn-vip {
       background: #ffd45c;
       color: #1b1730;
@@ -185,7 +204,6 @@
       font-weight: bold;
     }
 
-    /* Paginación Styles */
     .pagination-controls {
       display: flex;
       justify-content: center;
@@ -218,9 +236,11 @@
       body {
         padding: 16px;
       }
+
       h1 {
         font-size: 30px;
       }
+
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -230,7 +250,7 @@
 
 <body>
   <h1>Panel Admin TeleLatino</h1>
-  <div class="subtitle">Gestiona usuarios, VIP, vencimientos y actividad en la app.</div>
+  <div class="subtitle">Gestiona usuarios, VIP, vencimientos, actividad y avisos de renovación.</div>
 
   <section id="loginCard" class="card">
     <h2>Iniciar sesión</h2>
@@ -279,7 +299,19 @@
       type="text"
       placeholder="Buscar por email o ID de usuario..."
     />
+
     <button id="btnRefresh" class="btn-refresh">Actualizar lista desde Firebase</button>
+
+    <div class="email-tools">
+      <button id="btnExportExpiredBrevo" class="btn-email">
+        Descargar CSV vencidos para Brevo
+      </button>
+
+      <button id="btnMarkLastBrevoSent" class="btn-sent">
+        Marcar último CSV como enviado
+      </button>
+    </div>
+
     <div id="actionMessage" class="message hidden"></div>
   </section>
 
@@ -362,6 +394,8 @@
     const btnRefresh = document.getElementById("btnRefresh");
     const btnPrevPage = document.getElementById("btnPrevPage");
     const btnNextPage = document.getElementById("btnNextPage");
+    const btnExportExpiredBrevo = document.getElementById("btnExportExpiredBrevo");
+    const btnMarkLastBrevoSent = document.getElementById("btnMarkLastBrevoSent");
 
     const adminEmail = document.getElementById("adminEmail");
     const usersTable = document.getElementById("usersTable");
@@ -374,11 +408,10 @@
 
     let allUsers = [];
     let allDevices = [];
-    let filteredUsers = []; // Para la búsqueda
+    let filteredUsers = [];
     
-    // Configuración de Paginación
     let currentPage = 1;
-    const itemsPerPage = 50; // Muestra 50 usuarios por página
+    const itemsPerPage = 50;
 
     btnLogin.addEventListener("click", async () => {
       try {
@@ -393,18 +426,23 @@
       await signOut(auth);
     });
 
-    // El botón forzará la descarga de Firebase saltando el caché
     btnRefresh.addEventListener("click", async () => {
       await loadUsers(true); 
     });
 
-    // Búsqueda en tiempo real (Resetea a la página 1)
+    btnExportExpiredBrevo.addEventListener("click", () => {
+      exportExpiredUsersForBrevo();
+    });
+
+    btnMarkLastBrevoSent.addEventListener("click", async () => {
+      await markLastBrevoExportAsSent();
+    });
+
     searchInput.addEventListener("input", () => {
       currentPage = 1;
       processFiltersAndRender();
     });
 
-    // Controles de Paginación
     btnPrevPage.addEventListener("click", () => {
       if (currentPage > 1) {
         currentPage--;
@@ -434,7 +472,7 @@
       }
 
       showAdmin(user);
-      await loadUsers(); // Carga intentando usar el caché primero
+      await loadUsers();
     });
 
     function showLogin() {
@@ -462,23 +500,22 @@
         const now = Date.now();
         const lastFetch = localStorage.getItem(CACHE_TIME_KEY);
 
-        // 1. INTENTAR CARGAR DESDE CACHÉ (Si no se fuerza la actualización)
         if (!forceRefresh && lastFetch && (now - Number(lastFetch) < OCHO_HORAS_MS)) {
           const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
+
           if (cachedData && cachedData.users && cachedData.devices) {
             allUsers = cachedData.users;
             allDevices = cachedData.devices;
             
-            currentPage = 1; // Reiniciamos a la pág 1 al cargar
+            currentPage = 1;
             processFiltersAndRender();
             updateStats(allUsers);
-            showMessage(actionMessage, "Datos cargados desde caché local (Ahorraste lecturas de Firebase).");
+            showMessage(actionMessage, "Datos cargados desde caché local. No se consumieron nuevas lecturas de Firebase.");
             return;
           }
         }
 
-        // 2. DESCARGAR DE FIREBASE SI EL CACHÉ EXPIRÓ O SE FORZÓ
-        showMessage(actionMessage, "Descargando datos desde Firebase (Consumiendo lecturas)...");
+        showMessage(actionMessage, "Descargando datos desde Firebase...");
 
         const usersSnapshot = await getDocs(collection(db, "users"));
         allUsers = usersSnapshot.docs.map((document) => {
@@ -496,7 +533,6 @@
           return bTime - aTime;
         });
 
-        // 3. GUARDAR EN CACHÉ LOCAL
         const dataToCache = { users: allUsers, devices: allDevices };
         localStorage.setItem(CACHE_KEY, JSON.stringify(dataToCache));
         localStorage.setItem(CACHE_TIME_KEY, now.toString());
@@ -505,7 +541,7 @@
         processFiltersAndRender();
         updateStats(allUsers);
 
-        showMessage(actionMessage, "Lista actualizada desde la base de datos y guardada en caché.");
+        showMessage(actionMessage, "Lista actualizada desde Firebase y guardada en caché.");
       } catch (error) {
         console.error(error);
         showMessage(actionMessage, "Error cargando datos: " + error.message);
@@ -522,7 +558,7 @@
           return email.includes(query) || uid.includes(query);
         });
       } else {
-        filteredUsers = [...allUsers]; // Copia de todos los usuarios
+        filteredUsers = [...allUsers];
       }
 
       renderTablePage();
@@ -535,18 +571,15 @@
         return;
       }
 
-      // Calcular datos de paginación
       const totalPages = Math.ceil(filteredUsers.length / itemsPerPage) || 1;
+
       if (currentPage < 1) currentPage = 1;
       if (currentPage > totalPages) currentPage = totalPages;
 
       const startIndex = (currentPage - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
-      
-      // Obtener solo los 50 usuarios de esta página
       const usersToShow = filteredUsers.slice(startIndex, endIndex);
 
-      // Renderizar filas
       usersTable.innerHTML = usersToShow.map((user) => {
         const uid = user.uid || user.id || "-";
         const email = user.email || "-";
@@ -562,14 +595,13 @@
             <td>${formatDate(user.vipUntil)}</td>
             <td>${formatDateTime(user.lastLoginAt)}</td>
             <td>
-              <button class="btn-vip" onclick="activateVip('${uid}')">Activar 6 meses</button>
-              <button class="btn-remove" onclick="removeVip('${uid}')">Quitar VIP</button>
+              <button class="btn-vip" onclick="activateVip('${escapeJs(uid)}')">Activar 6 meses</button>
+              <button class="btn-remove" onclick="removeVip('${escapeJs(uid)}')">Quitar VIP</button>
             </td>
           </tr>
         `;
       }).join("");
 
-      // Actualizar UI de Paginación
       pageInfo.textContent = `Página ${currentPage} de ${totalPages} (${filteredUsers.length} usuarios)`;
       btnPrevPage.disabled = currentPage === 1;
       btnNextPage.disabled = currentPage === totalPages;
@@ -580,7 +612,18 @@
       const total = users.length;
       const trial = users.filter(user => user.status === "trial").length;
       const vip = users.filter(user => user.vip === true || user.status === "vip").length;
-      const expired = users.filter(user => user.status === "expired" || user.status === "free_only" || user.status === "inactive").length;
+
+      const expired = users.filter(user => {
+        const status = String(user.status || "").toLowerCase();
+        return (
+          status === "expired" ||
+          status === "free_only" ||
+          status === "inactive" ||
+          status === "free" ||
+          status === "gratis" ||
+          status === "vencido"
+        );
+      }).length;
 
       const now = Date.now();
       const fiveMinutesAgo = now - (5 * 60 * 1000);
@@ -612,11 +655,16 @@
       if (lastSeen > fiveMinutesAgo) {
         return `<span class="status-online">Activo ahora</span><br><span class="small">${formatDateTime(lastSeen)}</span>`;
       }
+
       return `<span class="status-offline">Última actividad</span><br><span class="small">${formatDateTime(lastSeen)}</span>`;
     }
 
     window.activateVip = async function(uid) {
-      if (!uid || uid === "-") { alert("ID de usuario no válido."); return; }
+      if (!uid || uid === "-") {
+        alert("ID de usuario no válido.");
+        return;
+      }
+
       if (!confirm("¿Activar VIP 6 meses para este usuario?")) return;
 
       try {
@@ -628,18 +676,26 @@
           vip: true,
           status: "vip",
           vipUntil: vipUntil,
-          lastAdminUpdateAt: now
+          lastAdminUpdateAt: now,
+          renewalEmailSent: false,
+          renewalEmailStatus: "not_needed",
+          renewalEmailSentAt: null,
+          renewalEmailExpirationPoint: vipUntil
         });
 
-        // Actualización local
         const userIndex = allUsers.findIndex(u => (u.uid === uid || u.id === uid));
+
         if (userIndex !== -1) {
           allUsers[userIndex].vip = true;
           allUsers[userIndex].status = "vip";
           allUsers[userIndex].vipUntil = vipUntil;
+          allUsers[userIndex].lastAdminUpdateAt = now;
+          allUsers[userIndex].renewalEmailSent = false;
+          allUsers[userIndex].renewalEmailStatus = "not_needed";
+          allUsers[userIndex].renewalEmailSentAt = null;
+          allUsers[userIndex].renewalEmailExpirationPoint = vipUntil;
         }
 
-        // Refrescar caché local con el cambio
         localStorage.setItem("telelatino_data_cache", JSON.stringify({ users: allUsers, devices: allDevices }));
 
         processFiltersAndRender();
@@ -652,7 +708,11 @@
     };
 
     window.removeVip = async function(uid) {
-      if (!uid || uid === "-") { alert("ID de usuario no válido."); return; }
+      if (!uid || uid === "-") {
+        alert("ID de usuario no válido.");
+        return;
+      }
+
       if (!confirm("¿Seguro que quieres quitar el VIP?")) return;
 
       try {
@@ -662,52 +722,326 @@
           vip: false,
           status: "expired",
           vipUntil: null,
-          lastAdminUpdateAt: now
+          lastAdminUpdateAt: now,
+          renewalEmailSent: false,
+          renewalEmailStatus: "pending",
+          renewalEmailSentAt: null,
+          renewalEmailExpirationPoint: now
         });
 
-        // Actualización local
         const userIndex = allUsers.findIndex(u => (u.uid === uid || u.id === uid));
+
         if (userIndex !== -1) {
           allUsers[userIndex].vip = false;
           allUsers[userIndex].status = "expired";
           allUsers[userIndex].vipUntil = null;
+          allUsers[userIndex].lastAdminUpdateAt = now;
+          allUsers[userIndex].renewalEmailSent = false;
+          allUsers[userIndex].renewalEmailStatus = "pending";
+          allUsers[userIndex].renewalEmailSentAt = null;
+          allUsers[userIndex].renewalEmailExpirationPoint = now;
         }
 
-        // Refrescar caché local con el cambio
         localStorage.setItem("telelatino_data_cache", JSON.stringify({ users: allUsers, devices: allDevices }));
 
         processFiltersAndRender();
         updateStats(allUsers);
-        showMessage(actionMessage, "VIP quitado correctamente.");
+        showMessage(actionMessage, "VIP quitado correctamente. El usuario queda pendiente para aviso de renovación.");
       } catch (error) {
         console.error(error);
         alert("Error quitando VIP: " + error.message);
       }
     };
 
+    function toMillisValue(value) {
+      if (!value) return null;
+
+      if (typeof value === "number") return value;
+
+      if (typeof value === "string" && /^\d+$/.test(value)) {
+        return Number(value);
+      }
+
+      if (typeof value === "string") {
+        const date = new Date(value);
+        return isNaN(date.getTime()) ? null : date.getTime();
+      }
+
+      if (typeof value === "object" && typeof value.toMillis === "function") {
+        return value.toMillis();
+      }
+
+      if (typeof value === "object" && value.seconds) {
+        return value.seconds * 1000;
+      }
+
+      return null;
+    }
+
+    function getExpirationPoint(user) {
+      return Math.max(
+        toMillisValue(user.vipUntil) || 0,
+        toMillisValue(user.trialUntil) || 0,
+        toMillisValue(user.createdAt) || 0,
+        toMillisValue(user.lastAdminUpdateAt) || 0
+      );
+    }
+
+    function isExpiredOrFreeForEmail(user) {
+      const now = Date.now();
+      const status = String(user.status || "").toLowerCase();
+
+      const vipUntil = toMillisValue(user.vipUntil);
+      const trialUntil = toMillisValue(user.trialUntil);
+
+      if (user.vip === true || status === "vip") {
+        return Boolean(vipUntil && vipUntil < now);
+      }
+
+      if (
+        status === "expired" ||
+        status === "free_only" ||
+        status === "inactive" ||
+        status === "free" ||
+        status === "gratis" ||
+        status === "vencido"
+      ) {
+        return true;
+      }
+
+      if (status === "trial" && trialUntil && trialUntil < now) {
+        return true;
+      }
+
+      return false;
+    }
+
+    function renewalNoticeAlreadySent(user) {
+      const sentAt = toMillisValue(user.renewalEmailSentAt);
+      const expirationPoint = getExpirationPoint(user);
+
+      if (sentAt && expirationPoint) {
+        return sentAt >= expirationPoint;
+      }
+
+      if (sentAt && !expirationPoint) {
+        return true;
+      }
+
+      return user.renewalEmailSent === true || user.renewalEmailStatus === "sent";
+    }
+
+    function getExpiredUsersPendingBrevoEmail() {
+      const seenEmails = new Set();
+
+      return allUsers.filter((user) => {
+        const email = String(user.email || "").trim().toLowerCase();
+
+        if (!email || !email.includes("@")) return false;
+        if (seenEmails.has(email)) return false;
+
+        if (!isExpiredOrFreeForEmail(user)) return false;
+        if (renewalNoticeAlreadySent(user)) return false;
+
+        seenEmails.add(email);
+        return true;
+      });
+    }
+
+    function csvEscape(value) {
+      const text = String(value || "");
+      return `"${text.replaceAll('"', '""')}"`;
+    }
+
+    function downloadCsv(filename, content) {
+      const blob = new Blob(["\ufeff" + content], {
+        type: "text/csv;charset=utf-8;"
+      });
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+
+    function exportExpiredUsersForBrevo() {
+      if (!allUsers.length) {
+        showMessage(actionMessage, "Primero actualiza la lista desde Firebase.");
+        return;
+      }
+
+      const usersToExport = getExpiredUsersPendingBrevoEmail();
+
+      if (!usersToExport.length) {
+        showMessage(actionMessage, "No hay usuarios vencidos pendientes por enviar a Brevo.");
+        return;
+      }
+
+      const rows = [
+        ["EMAIL", "NOMBRE"].map(csvEscape).join(","),
+        ...usersToExport.map((user) => {
+          return [
+            String(user.email || "").trim().toLowerCase(),
+            "Usuario"
+          ].map(csvEscape).join(",");
+        })
+      ];
+
+      const today = new Date().toISOString().slice(0, 10);
+      const filename = `telelatino_usuarios_vencidos_${today}.csv`;
+
+      downloadCsv(filename, rows.join("\n"));
+
+      localStorage.setItem(
+        "telelatino_last_brevo_export_ids",
+        JSON.stringify(usersToExport.map(user => user.id))
+      );
+
+      showMessage(
+        actionMessage,
+        `CSV descargado con ${usersToExport.length} usuarios vencidos. Súbelo a Brevo y envía la campaña.`
+      );
+    }
+
+    async function markLastBrevoExportAsSent() {
+      const raw = localStorage.getItem("telelatino_last_brevo_export_ids");
+
+      if (!raw) {
+        showMessage(actionMessage, "No hay un CSV reciente para marcar como enviado.");
+        return;
+      }
+
+      let docIds = [];
+
+      try {
+        docIds = JSON.parse(raw);
+      } catch (error) {
+        showMessage(actionMessage, "No se pudo leer el último CSV guardado.");
+        return;
+      }
+
+      if (!docIds.length) {
+        showMessage(actionMessage, "La última exportación no tiene usuarios.");
+        return;
+      }
+
+      if (!confirm(`¿Ya enviaste la campaña en Brevo? Se marcarán ${docIds.length} usuarios como avisados.`)) {
+        return;
+      }
+
+      const now = Date.now();
+
+      let ok = 0;
+      let errors = 0;
+
+      for (const docId of docIds) {
+        try {
+          const localUser = allUsers.find(user => user.id === docId);
+          const expirationPoint = localUser ? getExpirationPoint(localUser) : null;
+
+          await updateDoc(doc(db, "users", docId), {
+            renewalEmailSent: true,
+            renewalEmailStatus: "sent",
+            renewalEmailSentAt: now,
+            renewalEmailExpirationPoint: expirationPoint || null
+          });
+
+          if (localUser) {
+            localUser.renewalEmailSent = true;
+            localUser.renewalEmailStatus = "sent";
+            localUser.renewalEmailSentAt = now;
+            localUser.renewalEmailExpirationPoint = expirationPoint || null;
+          }
+
+          ok++;
+        } catch (error) {
+          console.error("Error marcando usuario:", docId, error);
+          errors++;
+        }
+      }
+
+      localStorage.setItem(
+        "telelatino_data_cache",
+        JSON.stringify({ users: allUsers, devices: allDevices })
+      );
+
+      processFiltersAndRender();
+      updateStats(allUsers);
+
+      showMessage(
+        actionMessage,
+        `Marcados como enviados: ${ok}. Errores: ${errors}.`
+      );
+    }
+
     function statusBadge(user) {
-      const status = user.status || "-";
-      if (user.vip === true || status === "vip") return `<span class="status-vip">VIP</span>`;
-      if (status === "trial") return `<span class="status-trial">trial</span>`;
-      if (status === "expired" || status === "free_only" || status === "inactive") return `<span class="status-expired">${escapeHtml(status)}</span>`;
+      const status = String(user.status || "-").toLowerCase();
+
+      if (user.vip === true || status === "vip") {
+        return `<span class="status-vip">VIP</span>`;
+      }
+
+      if (status === "trial") {
+        return `<span class="status-trial">trial</span>`;
+      }
+
+      if (
+        status === "expired" ||
+        status === "free_only" ||
+        status === "inactive" ||
+        status === "free" ||
+        status === "gratis" ||
+        status === "vencido"
+      ) {
+        return `<span class="status-expired">${escapeHtml(status)}</span>`;
+      }
+
       return escapeHtml(status);
     }
 
     function formatDate(value) {
       if (!value) return "-";
+
       let date = (typeof value === "number" || (typeof value === "string" && /^\d+$/.test(value))) 
         ? new Date(Number(value)) 
         : new Date(value);
+
+      if (typeof value === "object" && typeof value.toMillis === "function") {
+        date = new Date(value.toMillis());
+      }
+
+      if (typeof value === "object" && value.seconds) {
+        date = new Date(value.seconds * 1000);
+      }
+
       if (isNaN(date.getTime())) return "-";
+
       return date.toLocaleDateString("es-ES");
     }
 
     function formatDateTime(value) {
       if (!value) return "-";
+
       let date = (typeof value === "number" || (typeof value === "string" && /^\d+$/.test(value))) 
         ? new Date(Number(value)) 
         : new Date(value);
+
+      if (typeof value === "object" && typeof value.toMillis === "function") {
+        date = new Date(value.toMillis());
+      }
+
+      if (typeof value === "object" && value.seconds) {
+        date = new Date(value.seconds * 1000);
+      }
+
       if (isNaN(date.getTime())) return "-";
+
       return date.toLocaleString("es-ES");
     }
 
@@ -728,6 +1062,15 @@
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
+    }
+
+    function escapeJs(value) {
+      return String(value || "")
+        .replaceAll("\\", "\\\\")
+        .replaceAll("'", "\\'")
+        .replaceAll('"', '\\"')
+        .replaceAll("\n", "\\n")
+        .replaceAll("\r", "\\r");
     }
   </script>
 </body>
